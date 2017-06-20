@@ -52,16 +52,11 @@ function getCatPhotos() {
         * Note: A key is needed to use this free API.
         */
         // TODO: update to: http://thecatapi.com/docs.html#get
-        let options = {
-            url: config.get('picsEndpoint'),
-            headers: {
-                'X-Mashape-Key': config.get('PHOTO_KEY')
-            }
-        };
 
-        request(options, (err, res, body) => {
+        request.get('http://thecatapi.com/api/images/get?size=full', (err, res, body) => {
             if (!err) {
-                resolve(body);
+                // console.log('!!!!!!!', res);
+                resolve('http://thecatapi.com/api/images/get?size=full');
             } else {
                 console.error(`🚒 Error getCatPhotos: ${err}`);
                 reject(err);

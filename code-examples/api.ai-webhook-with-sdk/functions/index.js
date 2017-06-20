@@ -151,7 +151,7 @@ exports.rightMeow = functions.https.onRequest((request, response) => {
             // This sample uses a sound clip from the Actions on Google Sound Library
             // https://developers.google.com/actions/tools/sound-library
             let purr = 'https://actions.google.com/sounds/v1/animals/cat_purr_close.ogg',
-                speech = `<speak><audio src='${purr}'/> ${helloResponses[index]}</speak>`
+                speech = `<speak><audio src='${purr}'/> ${helloResponses[index]}</speak>`;
 
             app.ask(speech);
         }

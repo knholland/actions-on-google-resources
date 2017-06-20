@@ -6,8 +6,6 @@ nconf.env([
     'ENVIRONMENT',
     'FACTS_NUMBER',
     'FACTS_ENDPOINT',
-    'PHOTO_KEY',
-    'PICS_ENDPOINT',
     'PORT'
 ]);
 
@@ -20,8 +18,7 @@ if (!nconf.get('ENVIRONMENT') || !nconf.get('PORT')) {
 let config = {
     default: {
         factsNumber: nconf.get('FACTS_NUMBER') ? nconf.get('FACTS_NUMBER') : 1,
-        factsEndpoint: nconf.get('FACTS_ENDPOINT') ? nconf.get('FACTS_ENDPOINT') : 'http://catfacts-api.appspot.com/api/facts?number=',
-        picsEndpoint: nconf.get('PICS_ENDPOINT') ? nconf.get('PICS_ENDPOINT') : 'https://nijikokun-random-cats.p.mashape.com/random/kitten'
+        factsEndpoint: nconf.get('FACTS_ENDPOINT') ? nconf.get('FACTS_ENDPOINT') : 'http://catfacts-api.appspot.com/api/facts?number='
     }
 };
 

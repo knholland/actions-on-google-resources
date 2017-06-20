@@ -43,26 +43,63 @@ module.exports = (req) => {
                         'Are you ready?',
                         'Hmmm...where should we begin?'
                     ],
-                    index = getRandomNumbers(0, helloResponses.length);
+                    index = getRandomNumbers(0, helloResponses.length),
+                    surface = req.body.originalRequest.data.surface.capabilities,
+                    // This sample uses a sound clip from the Actions on Google Sound Library
+                    // https://developers.google.com/actions/tools/sound-library
+                    purr = 'https://actions.google.com/sounds/v1/animals/cat_purr_close.ogg',
+                    speech = `<speak><audio src='${purr}'/> ${helloResponses[index]}</speak>`;
 
-                dataResponse.speech = helloResponses[index];
-                dataResponse.displayText = helloResponses[index];
+                    if (surface.length > 1) {
+                        dataResponse = {
+                            speech: speech,
+                            displayText: helloResponses[index],
+                            data: {
+                                google: {
+                                    is_ssml: true,
+                                    no_input_prompts: [
+                                        {
+                                            ssml: 'Give me another chance, pleeease!'
+                                        }
+                                    ],
+                                    richResponse: {
+                                        items: [
+                                            {
+                                                simpleResponse: {
+                                                    textToSpeech: helloResponses[index]
+                                                }
+                                            }
+                                        ],
+                                        suggestions: [
+                                            {
+                                                title: 'cat facts'
+                                            },
+                                            {
+                                                title: 'help me'
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        };
+                    } else {
+                        dataResponse.speech = helloResponses[index];
+                        dataResponse.displayText = helloResponses[index];
+                    }
 
                 resolve(dataResponse);
             });
         },
-        facts: () => {
+        facts: (req) => {
             return new Promise ((resolve, reject) => {
                 Promise.all([data.facts(), data.photos()]).then(
                     (assets) => {
-                        // TODO: update to actually pull surface from req
-                        let surface = 'nah';
+                        let surface = req.body.originalRequest.data.surface.capabilities;
 
-                        // if (surface === 'text') {
-                            // TODO: Add a card here for image + fact
+                        if (surface.length > 1) {
                             dataResponse = {
-                            speech: JSON.parse(assets[0]).facts[0],
-                            displayText: JSON.parse(assets[0]).facts[0],
+                                speech: JSON.parse(assets[0]).facts[0],
+                                displayText: JSON.parse(assets[0]).facts[0],
                                 data: {
                                     google: {
                                         is_ssml: true,
@@ -71,41 +108,39 @@ module.exports = (req) => {
                                                 ssml: 'Give me another chance, pleeease!'
                                             }
                                         ],
-                                        expectedInputs: [
-                                            {
-                                                inputPrompt: {
-                                                    items: [
-                                                        {
-                                                            simpleResponse: {
-                                                                textToSpeech: 'Simple Response'
-                                                            }
-                                                        },
-                                                        {
-                                                            basicCard: {
-                                                                image: {
-                                                                    url: "https://24.media.tumblr.com/tumblr_l8cdenrcQp1qbth9mo1_500.jpg",
-                                                                    text: 'This is our image.'
-                                                                }
-                                                            }
+                                        richResponse: {
+                                            items: [
+                                                {
+                                                    simpleResponse: {
+                                                        textToSpeech: JSON.parse(assets[0]).facts[0]
+                                                    }
+                                                },
+                                                {
+                                                    basicCard: {
+                                                        formattedText: JSON.parse(assets[0]).facts[0],
+                                                        image: {
+                                                            url: 'http://thecatapi.com/api/images/get?size=full&format=src',
+                                                            accessibilityText: 'Cat'
                                                         }
-                                                    ],
-                                                    suggestions: [
-                                                        {
-                                                            title: 'give me another'
-                                                        }
-                                                    ]
+                                                    }
                                                 }
-                                            }
-                                        ]
+                                            ],
+                                            suggestions: [
+                                                {
+                                                    title: 'more'
+                                                },
+                                                {
+                                                    title: 'bye'
+                                                }
+                                            ]
+                                        }
                                     }
                                 }
                             };
-                        // } else {
-                        //     dataResponse.speech = JSON.parse(assets[0]).facts[0];
-                        //     dataResponse.displayText = JSON.parse(assets[0]).facts[0];
-                        //
-                        //
-                        // }
+                        } else {
+                            dataResponse.speech = JSON.parse(assets[0]).facts[0];
+                            dataResponse.displayText = JSON.parse(assets[0]).facts[0];
+                        }
 
                         resolve(dataResponse);
                     }
@@ -123,15 +158,58 @@ module.exports = (req) => {
                         'What do you need?',
                         'My b. Did I confuse you?'
                     ],
-                    index = getRandomNumbers(0, helpResponses.length);
+                    index = getRandomNumbers(0, helpResponses.length),
+                    surface = req.body.originalRequest.data.surface.capabilities;
 
-                dataResponse.speech = helpResponses[index];
-                dataResponse.displayText = helpResponses[index];
+                    if (surface.length > 1) {
+                        dataResponse = {
+                            speech: helpResponses[index],
+                            displayText: helpResponses[index],
+                            data: {
+                                google: {
+                                    is_ssml: true,
+                                    no_input_prompts: [
+                                        {
+                                            ssml: 'Give me another chance, pleeease!'
+                                        }
+                                    ],
+                                    richResponse: {
+                                        items: [
+                                            {
+                                                simpleResponse: {
+                                                    textToSpeech: helpResponses[index]
+                                                }
+                                            }
+                                        ],
+                                        suggestions: [
+                                            {
+                                                title: 'cat facts'
+                                            },
+                                            {
+                                                title: 'bye'
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        };
+                    } else {
+                        dataResponse.speech = helpResponses[index];
+                        dataResponse.displayText = helpResponses[index];
+                    }
+
+                resolve(dataResponse);
+            });
+        },
+        bye: () => {
+            return new Promise ((resolve) => {
+                dataResponse.speech = 'ok, bye!';
+                dataResponse.displayText = 'ok, bye!';
 
                 resolve(dataResponse);
             });
         }
     };
 
-    return intent[userIntent]();
+    return intent[userIntent](req);
 };

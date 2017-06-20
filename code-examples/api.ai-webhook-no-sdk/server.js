@@ -4,21 +4,22 @@ const bodyParser = require('body-parser'),
     express = require('express'),
     pkg = require('./package.json'),
     server = express(),
-    webhook = require('./lib/webhook');
+    webhook = require('./lib/webhook'),
+    config = require('./config');
 
 server.use(bodyParser.json());
 
-server.set('port', process.env.PORT);
+server.set('port', config.get('PORT'));
 
 server.get('/healthcheck', (req, res) => {
     res.send(pkg.version);
 });
 
 server.post('/webhook', (req, res) => {
-    console.log(req.body);
-    console.log('----------');
-    console.log(req.body.originalRequest.data.surface);
-    console.log(req.body.originalRequest.data.inputs);
+    // console.log(req.body);
+    // console.log('----------');
+    // console.log(req.body.originalRequest.data.surface);
+    // console.log(req.body.originalRequest.data.inputs);
 
     webhook(req).then(
         (data) => {
@@ -31,6 +32,6 @@ server.post('/webhook', (req, res) => {
     });
 });
 
-server.listen(process.env.PORT, () => {
-    console.log(`Server running on ${process.env.PORT}`);
+server.listen(config.get('PORT'), () => {
+    console.log(`Server running on ${config.get('PORT')}`);
 });
