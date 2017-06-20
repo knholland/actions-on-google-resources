@@ -1,0 +1,27 @@
+{
+  "name": "right-meow",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "eslint .",
+    "start": "ENVIRONMENT=local PORT=8080 node server.js"
+  },
+  "engines": {
+    "node": "8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/khowen/actions-on-google-resources/tree/master/code-examples/api.ai-webhook-no-sdk"
+  },
+  "homepage": "https://github.com/khowen/actions-on-google-resources/tree/master/code-examples/api.ai-webhook-no-sdk",
+  "author": "Katie Owen",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "1.17.2",
+    "eslint": "4.0.0",
+    "express": "4.15.3",
+    "nconf": "0.8.4",
+    "request": "2.81.0"
+  }
+}
