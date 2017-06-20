@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "eslint .",
-    "start": "FACTS_NUMBER=5 ENVIRONMENT=local PORT=8080 node server.js"
+    "start": "ENVIRONMENT=local PORT=8080 node server.js"
   },
   "engines": {
     "node": "8.0.0"

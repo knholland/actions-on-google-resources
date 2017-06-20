@@ -51,6 +51,7 @@ function getCatPhotos() {
         *
         * Note: A key is needed to use this free API.
         */
+        // TODO: update to: http://thecatapi.com/docs.html#get
         let options = {
             url: config.get('picsEndpoint'),
             headers: {

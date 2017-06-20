@@ -58,12 +58,54 @@ module.exports = (req) => {
                         // TODO: update to actually pull surface from req
                         let surface = 'nah';
 
-                        if (surface === 'text') {
+                        // if (surface === 'text') {
                             // TODO: Add a card here for image + fact
-                        } else {
-                            dataResponse.speech = JSON.parse(assets[0]).facts[0];
-                            dataResponse.displayText = JSON.parse(assets[0]).facts[0];
-                        }
+                            dataResponse = {
+                            speech: JSON.parse(assets[0]).facts[0],
+                            displayText: JSON.parse(assets[0]).facts[0],
+                                data: {
+                                    google: {
+                                        is_ssml: true,
+                                        no_input_prompts: [
+                                            {
+                                                ssml: 'Give me another chance, pleeease!'
+                                            }
+                                        ],
+                                        expectedInputs: [
+                                            {
+                                                inputPrompt: {
+                                                    items: [
+                                                        {
+                                                            simpleResponse: {
+                                                                textToSpeech: 'Simple Response'
+                                                            }
+                                                        },
+                                                        {
+                                                            basicCard: {
+                                                                image: {
+                                                                    url: "https://24.media.tumblr.com/tumblr_l8cdenrcQp1qbth9mo1_500.jpg",
+                                                                    text: 'This is our image.'
+                                                                }
+                                                            }
+                                                        }
+                                                    ],
+                                                    suggestions: [
+                                                        {
+                                                            title: 'give me another'
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            };
+                        // } else {
+                        //     dataResponse.speech = JSON.parse(assets[0]).facts[0];
+                        //     dataResponse.displayText = JSON.parse(assets[0]).facts[0];
+                        //
+                        //
+                        // }
 
                         resolve(dataResponse);
                     }

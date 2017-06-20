@@ -16,10 +16,13 @@ server.get('/healthcheck', (req, res) => {
 
 server.post('/webhook', (req, res) => {
     console.log(req.body);
+    console.log('----------');
+    console.log(req.body.originalRequest.data.surface);
+    console.log(req.body.originalRequest.data.inputs);
 
     webhook(req).then(
         (data) => {
-            console.log(`Response: ${data}`);
+            console.log(`Response: ${JSON.stringify(data)}`);
             res.json(data);
         }
     ).catch((error) => {
