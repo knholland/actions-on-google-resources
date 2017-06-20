@@ -10,7 +10,6 @@ function getRandomNumbers(min, max) {
 
 module.exports = (req) => {
     // TODO: Add sentiment analysis
-    // TODO: Add cat noises?
     let dataResponse,
         intent,
         userIntent;

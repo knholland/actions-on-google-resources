@@ -1,24 +1,18 @@
 'use strict';
 
 process.env.DEBUG = 'actions-on-google:*';
-const ApiAiApp = require('actions-on-google').ApiAiApp;
-const functions = require('firebase-functions');
-// const request = require('request');
-
-// API.AI defined actions for each intent
-const BYE = 'tell.bye';
-const FACTS = 'tell.facts';
-const HELP = 'tell.help';
-const START = 'input.welcome';
-
-const LINK_OUT_TEXT = 'Learn more';
-const GOOGLE_LINK = 'https://www.google.com/about/';
-
-const NO_INPUTS = [
-    'I didn\'t hear that.',
-    'If you\'re still there, say that again.',
-    'We can stop here. See you soon.'
-];
+const ApiAiApp = require('actions-on-google').ApiAiApp,
+    require('firebase-functions');
+    // API.AI defined actions for each intent
+    BYE = 'tell.bye';
+    FACTS = 'tell.facts';
+    HELP = 'tell.help';
+    START = 'input.welcome';
+    NO_INPUTS = [
+        'I didn\'t hear that.',
+        'If you\'re still there, say that again.',
+        'We can stop here. See you soon.'
+    ];
 
 // Generate random numbers to randomize responses
 function getRandomNumbers(min, max) {

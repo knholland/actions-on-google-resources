@@ -55,7 +55,6 @@ function getCatPhotos() {
 
         request.get('http://thecatapi.com/api/images/get?size=full', (err, res, body) => {
             if (!err) {
-                // console.log('!!!!!!!', res);
                 resolve('http://thecatapi.com/api/images/get?size=full');
             } else {
                 console.error(`🚒 Error getCatPhotos: ${err}`);

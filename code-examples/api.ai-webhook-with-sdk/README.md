@@ -1,28 +1,20 @@
 # API.AI Webhook - No SDK
-The purpose of this example is to show you how to do advanced webhook/business logic using Firebase + SDK.
+The purpose of this example is to show you how to do advanced webhook/business logic using Firebase + Api.ai.
 
 
-
-## To run this project:
-1. `npm install -g firebase-tools`
-2. `cd api-webhook-with-sdk`
-3. `firebase login`
-4. `firebase init`
-5. `firebase use <projectId>`
-6. `cd functions/`
-7. `npm i`
-8. `firebase deploy --only functions`
-9. copy Function URL provided
-10. paste this URL into the api.ai fulfillment webhook
-11. save changes in api.ai
-12. On integrations -> Actions on Google -> click test
-13. Click "view", this should take you to the web simulator
-
+# Run this Action:
+1. Download Firebase CLI `npm install -g firebase-tools`
+2. `firebase login`
+3. `cd actions-on-google-resources/code-examples/api.ai-webhook-with-sdk`
+4. `firebase init functions`
+6. `cd actions-on-google-resources/code-examples/api.ai-webhook-with-sdk/functions`
+7. `firebase deploy --only functions --project <projectId>`
+8. copy URL provided for webhook endpoint - Use this as fulfillment webhook for api.ai project.
 
 _Note: This project is for demonstration purposes and is not intended for production use._
 
 
 
 ## APIs used:
-- http://thecatapi.com/docs.html
+- https://market.mashape.com/nijikokun/kitten-placeholder#kitten
 - https://catfacts-api.appspot.com/
