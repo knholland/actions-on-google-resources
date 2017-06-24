@@ -1,5 +1,5 @@
-# API.AI Webhook - No SDK
-The purpose of this example is to show you how to do advanced webhook/business logic using Firebase + Api.ai.
+# API.AI Webhook - Using Actions on Google SDK
+The purpose of this example is to show you how to do advanced webhook/business logic using Firebase + Api.ai with the Actions on Google SDK.
 
 
 # Run this Action:

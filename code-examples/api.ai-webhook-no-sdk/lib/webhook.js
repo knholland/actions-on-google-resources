@@ -44,6 +44,7 @@ module.exports = (req) => {
                     ],
                     index = getRandomNumbers(0, helloResponses.length),
                     surface = req.body.originalRequest.data.surface.capabilities,
+
                     // This sample uses a sound clip from the Actions on Google Sound Library
                     // https://developers.google.com/actions/tools/sound-library
                     purr = 'https://actions.google.com/sounds/v1/animals/cat_purr_close.ogg',
@@ -91,14 +92,14 @@ module.exports = (req) => {
         },
         facts: (req) => {
             return new Promise ((resolve, reject) => {
-                Promise.all([data.facts(), data.photos()]).then(
-                    (assets) => {
+                data.facts().then(
+                    (fact) => {
                         let surface = req.body.originalRequest.data.surface.capabilities;
 
                         if (surface.length > 1) {
                             dataResponse = {
-                                speech: JSON.parse(assets[0]).facts[0],
-                                displayText: JSON.parse(assets[0]).facts[0],
+                                speech: fact,
+                                displayText: fact,
                                 data: {
                                     google: {
                                         is_ssml: true,
@@ -111,12 +112,12 @@ module.exports = (req) => {
                                             items: [
                                                 {
                                                     simpleResponse: {
-                                                        textToSpeech: JSON.parse(assets[0]).facts[0]
+                                                        textToSpeech: fact
                                                     }
                                                 },
                                                 {
                                                     basicCard: {
-                                                        formattedText: JSON.parse(assets[0]).facts[0],
+                                                        formattedText: fact,
                                                         image: {
                                                             url: 'http://thecatapi.com/api/images/get?size=full&format=src',
                                                             accessibilityText: 'Cat'
@@ -137,8 +138,8 @@ module.exports = (req) => {
                                 }
                             };
                         } else {
-                            dataResponse.speech = JSON.parse(assets[0]).facts[0];
-                            dataResponse.displayText = JSON.parse(assets[0]).facts[0];
+                            dataResponse.speech = fact;
+                            dataResponse.displayText = fact;
                         }
 
                         resolve(dataResponse);

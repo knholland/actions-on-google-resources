@@ -21,7 +21,7 @@ function getCatFacts() {
         */
         request.get(`${config.get('factsEndpoint')}${config.get('factsNumber')}`, (err, res, body) => {
             if (!err) {
-                resolve(body);
+                resolve(JSON.parse(body).facts[0].details);
             } else {
                 console.error(`🚒 Error getCatFacts: ${err}`);
                 reject(err);
@@ -31,41 +31,6 @@ function getCatFacts() {
 }
 
 
-
-
-/**
- * Gets cat photos from designated API
- *
- * @return {Promise}
- * Returns a promise.
- */
-function getCatPhotos() {
-    return new Promise((resolve, reject) => {
-        /**
-        * We are building our URL using environment variables.
-        *
-        * Unless we change our PICS_ENDPOINT env var, the URL is:
-        * https://nijikokun-random-cats.p.mashape.com/random/kitten
-        *
-        * To see how this is done, check out code-examples/config.js
-        *
-        * Note: A key is needed to use this free API.
-        */
-        // TODO: update to: http://thecatapi.com/docs.html#get
-
-        request.get('http://thecatapi.com/api/images/get?size=full', (err, res, body) => {
-            if (!err) {
-                resolve('http://thecatapi.com/api/images/get?size=full');
-            } else {
-                console.error(`🚒 Error getCatPhotos: ${err}`);
-                reject(err);
-            }
-        });
-    });
-}
-
-
 module.exports = {
-    facts: getCatFacts,
-    photos: getCatPhotos
+    facts: getCatFacts
 };

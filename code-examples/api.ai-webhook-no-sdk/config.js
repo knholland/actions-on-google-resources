@@ -18,7 +18,7 @@ if (!nconf.get('ENVIRONMENT') || !nconf.get('PORT')) {
 let config = {
     default: {
         factsNumber: nconf.get('FACTS_NUMBER') ? nconf.get('FACTS_NUMBER') : 1,
-        factsEndpoint: nconf.get('FACTS_ENDPOINT') ? nconf.get('FACTS_ENDPOINT') : 'http://catfacts-api.appspot.com/api/facts?number='
+        factsEndpoint: nconf.get('FACTS_ENDPOINT') ? nconf.get('FACTS_ENDPOINT') : 'http://www.catfact.info/api/v1/facts.json?per_page='
     }
 };
 
