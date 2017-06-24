@@ -9,7 +9,7 @@ Would you rather view this repo as a webpage? If so, checkout out the [gh-page](
 1. Code Examples
 	- [api.ai - no webhook](https://github.com/khowen/actions-on-google-resources/tree/master/code-examples/api.ai-no-webhook)
 	- [api.ai - webhook - no sdk](https://github.com/khowen/actions-on-google-resources/tree/master/code-examples/api.ai-webhook-no-sdk)
-	- [api.ai - webhook - sdk](https://github.com/khowen/actions-on-google-resources/tree/master/code-examples/api.ai-with-sdk)
+	- [api.ai - webhook - sdk](https://github.com/khowen/actions-on-google-resources/tree/master/code-examples/api.ai-webhook-with-sdk)
 
 2. Other
 	- [articles](https://github.com/khowen/actions-on-google-resources/blob/master/resource-materials/articles.md)
