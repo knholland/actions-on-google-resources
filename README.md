@@ -5,6 +5,8 @@ The intent of this repo is to provide resources to get started creating Actions 
 
 Would you rather view this repo as a webpage? If so, checkout out the [gh-page](https://khowen.github.io/actions-on-google-resources/).
 
+Would you rather view this repo as a webpage? If so, checkout out the [gh-page](https://khowen.github.io/actions-on-google-resources/).
+
 
 ## Resources
 1. Code Examples

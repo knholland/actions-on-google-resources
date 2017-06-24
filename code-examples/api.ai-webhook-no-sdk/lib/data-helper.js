@@ -21,7 +21,7 @@ function getCatFacts() {
         */
         request.get(`${config.get('factsEndpoint')}${config.get('factsNumber')}`, (err, res, body) => {
             if (!err) {
-                resolve(JSON.parse(body).facts[0].details);
+                resolve(body);
             } else {
                 console.error(`🚒 Error getCatFacts: ${err}`);
                 reject(err);
@@ -29,7 +29,6 @@ function getCatFacts() {
         });
     });
 }
-
 
 module.exports = {
     facts: getCatFacts
