@@ -14,8 +14,6 @@ Would you rather view this repo as a webpage? If so, checkout out the [gh-page](
 2. Other
 	- [articles](https://github.com/khowen/actions-on-google-resources/blob/master/resource-materials/articles.md)
 	- [videos](https://github.com/khowen/actions-on-google-resources/blob/master/resource-materials/videos.md)
-	- [podcasts](https://github.com/khowen/actions-on-google-resources/blob/master/resource-materials/podcasts.md)
-	- [api.ai alternatives](https://github.com/khowen/actions-on-google-resources/blob/master/resource-materials/api.ai-alternatives.md)
 	- [other](https://github.com/khowen/actions-on-google-resources/blob/master/resource-materials/other.md)
 
 ## Contributing
